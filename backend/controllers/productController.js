@@ -1,5 +1,5 @@
 const Product = require("../model/productModel");
-const {errorHandler} = require("../helpers/dbErrorHandler");
+//const {errorHandler} = require("../helpers/dberrorHandler");
 const formidable = require("formidable");
 const _ = require("lodash");
 const fs = require("fs");
@@ -58,7 +58,7 @@ exports.newProduct = (req, res) => {
         product.save((err, result) => {
             if(err){
                 return res.status(400).json ({
-                    error: errorHandler(err)
+                    error: 'Error'
                 });
             }
             res.json(result);
@@ -72,7 +72,7 @@ exports.deleteProduct =(req, res) => {
     product.remove((err, deleteProduct) => {
         if(err) {
             return res.status(400).json({
-                error: errorHandler(err)
+                error: 'Error'
             });
         }
         res.json({
@@ -115,7 +115,7 @@ exports.updateProduct = (req, res) => {
         product.save((err, result) => {
             if(err){
                 return res.status(400).json ({
-                    error: errorHandler(err)
+                    error: 'Error'
                 });
             }
             res.json(result);
@@ -209,7 +209,7 @@ exports.listSearch =(req, res) => {
         Product.find(query, (err, products) => {
             if(err) {
                 return res.status(400).json({
-                    error: errorHandler(err)
+                    error: 'Error'
                 });
             }
             res.json(products);
